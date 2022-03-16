@@ -9,6 +9,12 @@
 </head>
 <body>
     <header class="line">Code Quiz</header>
+    <nav class="header">
+        <div class="card-body justify-content-end">
+            <a type="button" id="score" class="hs" onclick="showHighScores()">View High Scores</a>
+            <a id="timer"></a>
+        </div>
+    </nav>
     <p id="para">Ready to Start The Quiz</p>
 
       <!-- start Quiz button -->
@@ -25,9 +31,8 @@
       <!-- Quiz Box -->
     <div class="timer">
         <div class="time_left_txt">Time Left</div>
-        <div class="timer_sec">15</div>
+        <div class="timer_sec">60</div>
     </div>
-    <div class="time_line"></div>
       
     <div class="quiz_box">
 
@@ -41,17 +46,11 @@
         </section>
           <!-- footer of Quiz Box -->
         <footer>
-            <div class="total_que">
-                  <!-- Here I've inserted Question Count Number from JavaScript -->
-            </div>
             <button class="next_btn">Next</button>
         </footer>
     </div>
       <!-- Result Box -->
     <div class="result_box">
-        <div class="icon">
-            <i class="fas fa-crown"></i>
-        </div>
         <div class="complete_text">You answered all questions!</div>
         <div class="score_text">
               <!-- Here I've inserted Score Result from JavaScript -->
