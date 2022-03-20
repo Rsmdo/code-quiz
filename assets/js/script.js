@@ -9,7 +9,9 @@ var option_list = document.querySelector(".option_list");
 var time_line = document.querySelector("header .time_line");
 var timeText = document.querySelector(".timer .time_left_txt");
 var timeCount = document.querySelector(".timer .timer_sec");
-var score = document.querySelector("#score");
+var score = document.querySelector(".highScoresList")
+
+
 // if startQuiz button clicked
 
 info_box.classList.add("activeInfo"); //show info box
@@ -19,7 +21,6 @@ continue_btn.onclick = ()=>{
     info_box.classList.remove("activeInfo"); //hide info box
     quiz_box.classList.add("activeQuiz"); //show quiz box
     showQuetions(0); //calling showQestions function
-    queCounter(1); //passing 1 parameter to queCounter
     startTimer(60); //calling startTimer function
 }
 
@@ -45,7 +46,6 @@ restart_quiz.onclick = ()=>{
     clearInterval(counter); //clear counter
     clearInterval(counterLine); //clear counterLine
     startTimer(timeValue); //calling startTimer function
-    startTimerLine(widthValue); //calling startTimerLine function
     timeText.textContent = "Time Left"; //change the text of timeText to Time Left
     next_btn.classList.remove("show"); //hide the next button
 }
@@ -64,7 +64,6 @@ next_btn.onclick = ()=>{
         clearInterval(counter); //clear counter
         clearInterval(counterLine); //clear counterLine
         startTimer(timeValue); //calling startTimer function
-        startTimerLine(widthValue); //calling startTimerLine function
         timeText.textContent = "Time Left"; //change the timeText to Time Left
         next_btn.classList.remove("show"); //hide the next button
     }else{
@@ -109,7 +108,7 @@ function optionSelected(answer){
     }else{
         answer.classList.add("incorrect"); //adding red color to correct selected option
         timeValue -=15;
-        console.log("Wrong Answer");
+        console.log("Wrong Answer" + timeValue);
         for(i=0; i < allOptions; i++){
             if(option_list.children[i].textContent == correcAns){ //if there is an option which is matched to an array answer 
                 option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
@@ -125,8 +124,14 @@ function showResult(){
     result_box.classList.add("activeResult"); //show result box
     var scoreText = result_box.querySelector(".score_text");
     let scoreTag = '<span> You got<p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
-    scoreText.innerHTML = scoreTag;
+    scoreText.innerHTML=scoreTag;
+    let name = window.prompt("what is ur name");
+    var high = localStorage.setItem(userScore,name);
+    var uu = '<li>' + localStorage.getItem(userScore,name)+'</li>';
+    score.innerHTML = uu;
 }
+// could not figure out how to save high scores
+
 function startTimer(time){
     counter = setInterval(timer, 1000);
     function timer(){
@@ -153,25 +158,16 @@ function startTimer(time){
 
 
 
-// function showHighScore() {
-//     header.style.display = "none"; // Hide header 
-//     allDone.style.display = "none"; // Hide all done
-//     finalScoreIs.style.display = "none" // Hide Final Score
-//     initials.style.display = "none" // Hide initial input
-//     initialButton.style.display = "none" // Hide initial button
-//     initialInput.style.display = "none" // Hide initial button
-//     highScoreButtons.style.display = "block"; // Show Final Score Page 
-    
-//     var getInitials = document.getElementById("initialInput").value; // captures the value of the initials 
-  
-//     var highScoreArray = JSON.parse(localStorage.getItem("highScore")) || [];
-    
-//     var localStorageArray = { score: secondsLeft, initials: getInitials };
-//     highScoreArray.push(localStorageArray)
-//     localStorage.setItem("highScore", JSON.stringify(highScoreArray)); // Adds array 
-  
-//     var highScores = getInitials + ": " + secondsLeft; // add in + getInitials when read it
-  
-//     $("#highScoreList").append(highScores) // Appends high score & initials
 
+
+
+// savsScore = e => {
+//     e.preventDefault(); 
+//     const scoree = {
+//         score: userScore,
+//         name: namee.value
+//     };
+//     score.push(scoree);
 // }
+// const score = JSON.parse(localStorage.getItem(userScore,namee) || [];
+// console.log(score);

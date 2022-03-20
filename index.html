@@ -10,19 +10,21 @@
 <body>
     <header class="line">Code Quiz</header>
     <nav class="header">
-        <div class="card-body justify-content-end">
-            <a type="button" id="score" class="hs" onclick="showHighScores()">View High Scores</a>
-            <a id="timer"></a>
+        <div id="highScores">
+            <a type="button" id="score" class="hs"> High Scores</a>
+            <ul class="highScoresList">
+
+            </ul>
         </div>
+        <a id="timer"></a>
     </nav>
-    <p id="para">Ready to Start The Quiz</p>
 
       <!-- start Quiz button -->
       <!-- Info Box -->
     <div class="info_box">
         <div class="info-title"><span>Some Rules of this Quiz</span></div>
         <div class="info-list">
-             <div class="info">Press continue to start Quiz</div>
+             <div class="info">Welcome to the Code Quiz <br> You have 60 seconds to answer 5 questions, but each wrong question will take off 15 seconds of your overall time.<br> Good luck! and Press continue to start Quiz</div>
         </div>
         <div class="buttons">
             <button class="restart">Continue</button>
